@@ -1,0 +1,250 @@
+<html>
+    <head>
+      <title>Learn The English Letters</title>  
+        <style>
+		
+			.con
+			{
+					background-image: url("footer.jpg");
+					width: 100%;
+					height: 200px;
+			}
+        .asd{
+                   font-size: 25px;
+                    text-align: center;
+					background-image: url("header.jpg");
+					height: 130px;	
+            }
+         #a{
+                   font-size: 50px;
+                   margin-bottom: 30px;
+                    text-align: center;
+			}
+      #show{
+                    margin-top: -10px;
+                    padding: 30px;
+                    text-align: center;
+			}
+ #showimage{
+                    height: 401px;
+                    width: 401px;
+                    margin-top: -40px;
+                    margin-left: 450px;
+                    color: #33ffcc;
+                    font-size: 45px;
+                    text-align: center;
+			}
+#showimage img{
+					margin-left:50px;
+					margin-top: -10px;
+					height: 250px;
+					width: 300px;
+            }
+     button{
+		            margin-left: 2px;
+                    padding: 10px 40px;
+                    border-radius: 15px;
+                    font-size: 12px ;
+                    font:bold;
+                    color: black;
+                    background-color: #33ffcc;
+				    outline: none;
+				    height: 34px;
+                    margin-top: 0px;
+           }
+button.btn{
+					margin-top: 10px;            
+					border-radius: 12px;
+					background-color: #33ffcc;
+					border: none;
+					color: black;
+					text-align: center;
+					font-size: 15px ;
+					font:bold;              
+            }
+button.btn:hover{
+					font-size: 15px;
+				    border-radius: 15px;
+				    background-color: #ff00cc; /* Green */
+			    	border: none;
+					color: white;
+					text-align: center;
+            }
+          #in{
+					height: 34px;
+					border-radius: 12px;
+					background-color: #33ffcc;
+					font-size: 15px;
+					color: black;
+					text-align: center;
+					outline: none;
+		  }
+
+        </style>
+    </head>
+    <body>
+		
+        <div class="asd">
+                <p id="a">Learn The English Letters For Kids</p>
+                <label>Number of letter </label><input id="in" value="" placeholder="Enter number to generate" type=number> <button id="btn">Generate</button>
+        </div>
+        <div id="show">
+		</div>
+        <div id="showimage">
+		</div>
+		<div class="con">
+		</div>
+          <script>
+            //function Template 
+            function objects(type,target,Date_Time){
+                this.type=type;
+                this.target=target;
+                this.Date_Time=Date_Time;
+            }
+						  
+			//Timer****************************
+			  setInterval(function(){localStorage.clear();},5000);
+
+            //load*******************************************
+							
+
+            window.addEventListener("load",function(e){
+            var load=new objects(e.type,e.target,new Date());
+	    if(localStorage.getItem("load")==null)
+              window.localStorage.setItem("load","Type: "+load.type+" Target: "+ load.target +" Date&Time: "+load.Date_Time+"\n");
+        else
+          {
+				var arr=Array(localStorage.getItem("load"));
+				arr.push("Type: "+load.type+" Target: "+ load.target +" Date&Time: "+load.Date_Time+"\n");
+				window.localStorage.setItem("load",arr);
+           }
+                });
+            //unload***********************************************
+              window.addEventListener("unload",function(e){
+              var unload=new objects(e.type,e.target,new Date());
+         if(localStorage.getItem("unload")==null)
+                window.localStorage.setItem("unload","Type: "+unload.type+" Target: "+ unload.target +" Date&Time: "+unload.Date_Time+"\n");
+		else
+		 {
+			var arr=Array(localStorage.getItem("unload"));
+			arr.push("Type: "+unload.type+" Target: "+ unload.target +" Date&Time: "+unload.Date_Time+"\n");
+			window.localStorage.setItem("unload",arr);
+		 }
+ 
+                });
+       //Generate Button************************************************************
+                var alpha=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
+                var names=["Apple","Boy","Cat","Dog","Elephant","Fish","Girl","Hours","Ice_cream","Jam","Kangaroo","Lion","Monky","Nurse","Oil","Panda","Queen","Rabbit","School","Tree","Umbrella","Vagetabls","Wolf","Xylophone","Yoyo","Zombies"];
+                var images=["a.jpeg","b.jpeg","c.jpeg","d.jpg","e.jpg","f.jpg","g.jpg","h.jpg","i.jpg","j.jpg","k.jpg","l.jpg","m.jpg","n.jpg","o.jpg","p.jpg","q.jpg","r.jpg","s.jpg","t.jpg","u.jpg","v.png","w.jpg","x.jpg","y.jpg","z.jpg"];
+                var dv=document.getElementById("show");
+                var inp=document.getElementById("in");
+                var btn=document.getElementById("btn");
+                var dv3=document.getElementById("showimage");
+                var x=Math.floor(Math.random()*(26));
+                var img=null;
+                var count=1;
+                var  p_img=null;
+                var  p_text=null;
+              
+     btn.addEventListener("click",function(e){
+                if(img!=null&&p_img!=null&& p_text!=null)
+                        {
+                            dv3.removeChild(img);
+                            p_img.removeChild(p_text);
+                            dv3.removeChild(p_img);
+                            img=null;
+                            p_img=null;
+                            p_text=null;
+                        }	
+                  dv.innerHTML=" ";
+            var alphasign=[-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1];
+              
+                    if(parseInt(inp.value)>26||parseInt(inp.value)<0){
+                        
+                        alert("Number must be between 1 to 26");
+                        window.location.reload(true);
+                    }
+                    else{
+                       var btngenerate=new objects(e.type,e.target,new Date());
+			   
+			   if(localStorage.getItem("clickbtngenerate")==null)
+                    window.localStorage.setItem("clickbtngenerate","Type: "+btngenerate.type+" Target: "+ btngenerate.target +" Date&Time: "+btngenerate.Date_Time+"\n");
+				else
+				{
+				   
+				   var arr=Array(localStorage.getItem("clickbtngenerate"));
+				   arr.push("Type: "+btngenerate.type+" Target: "+ btngenerate.target +" Date&Time: "+btngenerate.Date_Time+"\n");
+					window.localStorage.setItem("clickbtngenerate",arr);
+				   
+				}
+			     for(var i=0;i<parseInt(inp.value);i++)
+                 {
+					//to handel repeat alpha
+                 while(true)
+                      {
+                       if(alphasign[x]==-1)
+                         {
+                            
+                           alphasign[x]++;
+                           break;
+                         }
+                           else
+                           {
+                              var x=Math.floor(Math.random()*(26));
+                           }
+                       }
+					   if(i==13)
+					   {
+						dv.innerHtml="<br><br>";
+					   }
+                 var d=[];
+                    d[i]=document.createElement("button");
+					
+                    var text=document.createTextNode(alpha[x]);
+                    d[i].appendChild(text);
+                    d[i].setAttribute("class","btn");
+               dv.appendChild(d[i]);
+               d[i].addEventListener("click",function(e){
+			 
+                var alpha_btn=new objects(e.type,e.target,new Date());
+
+		 if(localStorage.getItem("clickAlphabtn "+e.target.textContent)==null)
+               window.localStorage.setItem("clickAlphabtn "+e.target.textContent,"Type: "+alpha_btn.type+" Target: "+ alpha_btn.target +" Date&Time: "+alpha_btn.Date_Time+"\n");
+			else
+			{
+			   
+			   var arr=Array(localStorage.getItem("clickAlphabtn "+e.target.textContent));
+			   arr.push("Type: "+alpha_btn.type+" Target: "+ alpha_btn.target +" Date&Time: "+alpha_btn.Date_Time+"\n");
+				window.localStorage.setItem("clickAlphabtn "+e.target.textContent,arr);
+			   
+			}
+                   if(img!=null&&p_img!=null&& p_text!=null)
+                        {
+                            dv3.removeChild(img);
+                            p_img.removeChild(p_text);
+                            dv3.removeChild(p_img);
+                            img=null;
+                            p_img=null;
+                            p_text=null;
+                        }
+                       img= document.createElement("img");
+                       p_img= document.createElement("p");
+                            for(var j=0;j<26;j++)
+                            {
+                                if(e.target.textContent==alpha[j]){
+                                    img.src=images[j];
+                                     p_text=document.createTextNode(names[j]);
+									 
+									 
+                                    break;
+                                }
+                            }
+                         
+                          p_img.appendChild(p_text);
+                          dv3.appendChild(p_img);
+						   dv3.appendChild(img);
+                });} }      }    );
+               
+            </script>
+    </body>
+</html>
