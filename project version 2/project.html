@@ -34,8 +34,9 @@
                     margin-left: 450px;
                     color: #33ffcc;
                     font-size: 45px;
-                    text-align: center;
+                     text-align: center; 
 			}
+     
 #showimage img{
 					margin-left:50px;
 					margin-top: -10px;
@@ -83,22 +84,21 @@ button.btn:hover{
 		  }
       #table{
 
-text-align: center;
+          text-align: center;
 					font-size: 25px;
 					color: black;
 
       }
       #table td{
         border-radius: 12px;
-text-align: center;
-background-color: #33ffcc;
-					font-size: 15px;
-					color: black;
-width: 2%;
+        text-align: center;   
+        background-color: #33ffcc;
+				font-size: 15px;
+				color: black;
+        width: 2%;
 
       }
-#event{
-}
+
         </style>
     </head>
     <body>
@@ -131,7 +131,7 @@ width: 2%;
             }
 
              $("#btnEvent").on("click",function(){
-              $("#table").text("");
+               $("#table").text("");
               $.ajax({
     "type": "GET",
     "url": "project.php",
@@ -229,7 +229,7 @@ for(var i=0;i<$x.length;i++)
                 });
        //Generate Button************************************************************
                 var alpha=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
-                var names=["Apple","Boy","Cat","Dog","Elephant","Fish","Girl","Hours","Ice_cream","Jam","Kangaroo","Lion","Monky","Nurse","Oil","Panda","Queen","Rabbit","School","Tree","Umbrella","Vagetabls","Wolf","Xylophone","Yoyo","Zombies"];
+                var names=["Apple","Boy","Cat","Dog","Elephant","Fish","Girl","Hourse","Ice_cream","Jam","Kangaroo","Lion","Monkey","Nurse","Oil","Panda","Queen","Rabbit","School","Tree","Umbrella","Vegetables","Wolf","Xlyophone","Yoyo","Zombie"];
                 var images=["a.jpeg","b.jpeg","c.jpeg","d.jpg","e.jpg","f.jpg","g.jpg","h.jpg","i.jpg","j.jpg","k.jpg","l.jpg","m.jpg","n.jpg","o.jpg","p.jpg","q.jpg","r.jpg","s.jpg","t.jpg","u.jpg","v.png","w.jpg","x.jpg","y.jpg","z.jpg"];
                 var dv=document.getElementById("show");
                 var inp=document.getElementById("in");
@@ -339,15 +339,34 @@ for(var i=0;i<$x.length;i++)
                                 if(e.target.textContent==alpha[j]){
                                     img.src=images[j];
                                      p_text=document.createTextNode(names[j]);
-									 
-									 
+                                   
+									 //Sound*****************************************************************          
+                   var aa=new Audio("sound/"+alpha[j]+".mp3");
+                                      aa.play();
+                      setTimeout(function(){
+                                    var aa=new Audio("sound/"+names[j]+".mp3"); 
+                                    aa.play();
+                                           },1000);
+									          //**********************************************************************
                                     break;
                                 }
                             }
                          
-                          p_img.appendChild(p_text);
+                          p_img.appendChild(p_text); 
                           dv3.appendChild(p_img);
-						   dv3.appendChild(img);
+						              dv3.appendChild(img);
+        
+        
+            //animation***********************************************************
+                                     $("img").fadeOut(0,function(){
+                                      $("img").show(1000);
+
+                                     });
+                                     $("#showimage p").fadeOut(0,function(){
+                                      $("#showimage p").show(1000);
+
+                                     });
+              //*******************************************************************
                 });} }      }    );
                
             </script>
